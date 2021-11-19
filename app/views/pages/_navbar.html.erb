@@ -20,7 +20,7 @@
           <a class="nav-link core-sprite profile-icon hide-text" href="#">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link core-sprite profile-icon hide-text" href="#">Messaging</a>
+          <%= link_to 'Messaging', conversations_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>

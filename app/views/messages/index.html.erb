@@ -3,7 +3,7 @@
     <% if message.body %>
       <div class="media">
         <div class="media-body">
-          <h5 class="media-heading"><%= message.user.email.split('@')[0] %></h5>
+          <h5 class="media-heading"><%= message.user.email.split('@')[0] %> <small class="text-muted"> <%= message.time %></small></h5>
           <p><%= message.body %></p>
         </div>
       </div>
@@ -13,7 +13,7 @@
 
 <%= form_for [@conversation, @message] do |f| %>
   <div class="form-group">
-    <%= f.text_area :body, autofocus: true, placeholder: "Your message", class: "form-control", rows: 5 %>
+    <%= f.text_area :body, autofocus: true, placeholder: "Start typing...", class: "form-control", rows: 2 %>
   </div>
 
   

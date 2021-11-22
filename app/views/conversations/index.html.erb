@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-4">
+    <ul id="users" class="list-group">
+      <li class="list-group-item">Users</li>
+      <% @users.each do |user| %>
+        <li class="list-group-item" data-searchstring="<%= user.email.split('@')[0]%>">
+          <%= link_to user.email.split('@')[0], conversations_path(sender_id: current_user.id, receiver_id: user.id), method: :post %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <ul class="list-group">
+      <li class="list-group-item">Conversations</li>
+      <% @conversations.each do |conversation| %>
+        <li class="list-group-item" data-conversation-id="<%= conversation.id %>">
+          <%= link_to conversation.recipient(current_user).email.split('@')[0], conversation_messages_path(conversation) %>
+          <% if !conversation.unread_message_count(current_user).zero? %>
+            <span class="badge"><%= conversation.unread_message_count(current_user) %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,1 +1,21 @@
 <h1>Home</h1>
+<div class="posts">
+  <% Post.all.each do |post| %>
+    <section class="post">
+      <section class="post">
+  <div class="user">
+    <div class="avatar">
+      <%= image_tag 'icon.png' %>
+    </div>
+    <div class="username">
+      <%= User.name %>
+    </div>
+  </div>
+  <%= image_tag 'icon.png' %>
+<div class="description">
+    <%= post.caption %>
+  </div>
+</section>
+    </section>
+  <% end %>
+</div>

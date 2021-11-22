@@ -1,33 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <%= link_to image_tag("icon.png"), root_path, class: "navbar-brand core-sprite hide-text" %>
+    <%= link_to image_tag("icon.png"), root_path, class: "navbar-brand" %>
+    <% if user_signed_in? %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-md-auto">
-         <% if user_signed_in? %>
         <li class="nav-item">
           <form class="form-inline my-2 my-lg-0 ml-md-auto">
            <input class="form-control mr-sm-2 text-center" type="search" placeholder="Search" aria-label="Search">
           </form>
         </li>
         <li class="nav-item">
-          <a class="nav-link core-sprite notification-icon hide-text" href="#">Notification</a>
+          <a class="nav-link" href="#">Notification</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link core-sprite profile-icon hide-text" href="#">Profile</a>
+          <a class="nav-link" href="<%= user_path(current_user)%>">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link core-sprite profile-icon hide-text" href="#">Messaging</a>
+          <a class="nav-link" href="#">Messaging</a>
         </li>
         <li class="nav-item">
           <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
       <% else %>
       <% end %>
-       
       </ul>
     </div>
   </div>

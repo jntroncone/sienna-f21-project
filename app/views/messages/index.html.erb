@@ -3,7 +3,7 @@
     <% if message.body %>
       <div class="media">
         <div class="media-body">
-          <h5 class="media-heading"><%= message.user.email.split('@')[0] %> <small class="text-muted"> <%= message.time %></small></h5>
+          <h5 class="media-heading"><%= message.user.name %> <small class="text-muted"> <%= message.time %></small></h5>
           <p><%= message.body %></p>
         </div>
       </div>

@@ -1,9 +1,10 @@
-class ApplicationController < ActionController::Base
-before_action :authenticate_user!
+class ConversationsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @users = User.where.not(id: current_user.id)
     @conversations = Conversation.where("sender_id = ? OR receiver_id = ?", current_user.id, current_user.id)
+    render :index
   end
 
   def create

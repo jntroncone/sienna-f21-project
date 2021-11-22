@@ -7,4 +7,8 @@ class UsersController < ApplicationController
     def edit
         @user = User.find(params[:id])
     end
+    def update
+        current_user.update(params.require(:user).permit(:name, :bio))
+        redirect_to current_user
+      end
 end

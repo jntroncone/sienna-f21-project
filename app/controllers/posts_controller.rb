@@ -5,7 +5,7 @@ class PostsController < ApplicationController
             flash[:success] = "Post made"
             redirect_to root_path
         else
-            flash.now[:error] = "wtf"
+            flash.now[:error] = "No file attatched"
             render :new
         end
     end

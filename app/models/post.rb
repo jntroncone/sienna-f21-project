@@ -16,6 +16,7 @@ class Post < ApplicationRecord
   def image_presence
     errors.add(:image, "can't be blank") unless image.attached?
   end
+  
 end
 
 

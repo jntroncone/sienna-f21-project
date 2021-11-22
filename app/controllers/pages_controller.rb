@@ -6,5 +6,9 @@ class PagesController < ApplicationController
     
     def home
         render :home
+        @posts = Post.order(created_at: :desc)
+
     end
+
+    
 end

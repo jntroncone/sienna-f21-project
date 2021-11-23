@@ -22,8 +22,8 @@
     padding-left: $close-font-size + $alert-padding-x * 2;
   }
 .card{border-radius: 25px;}
-*{padding-bottom: 2px;}
+*{padding-bottom: 2px; color:white !important;}
 body{background-color:#121212; height: 100%;}
 html{height: 100%;}
 .login{margin: 0 auto; border: 0px;}
-
+.card{background-color: #121212;}

@@ -1,6 +1,10 @@
 <div class="post-show row">
   <div class="col-md-8">
-    <%=image_tag 'icon.png', class: 'image' %>
+    <% Post.all.each do |post| %>
+    <%if @post.id == post.id%>
+        <%= image_tag post.image, class: "image" %>
+      <% end %>
+      <% end %>
   </div>
   <div class="col-md-4">
     <div class="user">

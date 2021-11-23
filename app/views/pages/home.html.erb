@@ -7,10 +7,11 @@
       <%= image_tag 'icon.png' %>
     </div>
     <div class="username">
-      <%= @user.name %>
+      <%= post.user.name %>
     </div>
   </div>
       <section class="post">
+
   <% if post.image.attached? %>
   <%= image_tag post.image %>
   <% end %>

@@ -36,3 +36,18 @@
   </div>
 </div>
 
+
+
+<div class="posts">
+  <% Post.all.each do |post| %>
+    <section class="post">
+    <div class="wrapper">
+      <%=link_to post_path(post) do %>
+        <%=  image_tag 'icon.png' %>
+      <% end %>
+</div>
+  <% end %>
+</div>
+     
+   
+

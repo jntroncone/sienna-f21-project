@@ -12,6 +12,7 @@
       <div class="row">
         <p class="username"><%= @user.bio %></p><br>
       </div>
+      <% if current_user.id == @user.id %>
     <div class="row">
       <button type="button" class="btn btn-dark"><%= link_to "Create New Post", new_post_path, {:style=>'text-decoration: none; color: #000;', :class => "css_class"}%></button>
       <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" style="margin-left: 15px">Settings</button>
@@ -35,6 +36,7 @@
     </div>
   </div>
 </div>
+<%end%>
 
 <% if current_user.id == @user.id %>
 <div class="posts">
@@ -43,7 +45,7 @@
     <section class="post">
     <div class="wrapper">
       <%=link_to post_path(post) do %>
-        <%= image_tag post.image %>
+        <%= image_tag post.image, class: 'w-100'%>
       <% end %>
         <% end %>
 </div>
@@ -54,7 +56,7 @@
     <section class="post">
     <div class="wrapper">
       <%=link_to post_path(post) do %>
-        <%= image_tag post.image %>
+        <%= image_tag post.image, class: 'w-100' %>
       <% end %>
         <% end %>
           <% end %>

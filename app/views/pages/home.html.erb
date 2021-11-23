@@ -13,7 +13,7 @@
       <section class="post">
 
   <% if post.image.attached? %>
-  <%= image_tag post.image %>
+  <%= image_tag post.image,class: 'w-100' %>
   <% end %>
 <div class="description">
     <%= post.caption %>

@@ -2,15 +2,15 @@
 <div class="posts">
   <% @posts.each do |post| %>
     <section class="post">
-      <section class="post">
-  <div class="user">
+      <div class="user">
     <div class="avatar">
       <%= image_tag 'icon.png' %>
     </div>
     <div class="username">
-      <%= User.name %>
+      <%= @user.name %>
     </div>
   </div>
+      <section class="post">
   <% if post.image.attached? %>
   <%= image_tag post.image %>
   <% end %>

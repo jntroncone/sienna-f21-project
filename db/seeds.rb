@@ -14,5 +14,14 @@ user1 = User.create!(
 
 user2 = User.create!(
   email: "test2@email.com",
-  password: "test12"
+  password: "test12",
+  name: "Person",
+  bio: "Another tester"
+)
+
+user3 = User.create!(
+  email: "jntroncone@gmail.com",
+  password: "password",
+  name: "Julie Troncone",
+  bio: 'Cats!'
 )

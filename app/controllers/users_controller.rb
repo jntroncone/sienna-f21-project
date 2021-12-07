@@ -6,9 +6,10 @@ class UsersController < ApplicationController
     end
     def edit
         @user = User.find(params[:id])
+        
     end
     def update
-        current_user.update(params.require(:user).permit(:name, :bio))
+        current_user.update(params.require(:user).permit(:name, :bio, :avatar))
         redirect_to current_user
-      end
+    end
 end

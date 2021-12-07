@@ -4,7 +4,11 @@
     <section class="post">
       <div class="user">
     <div class="avatar">
-      <%= image_tag 'icon.png' %>
+      <% if post.user.avatar.attached? %>
+        <%= image_tag post.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle" %>
+      <% else %>
+        <%= image_tag 'icon.png' %>
+      <% end %>
     </div>
     <div class="username">
       <%= post.user.name %>

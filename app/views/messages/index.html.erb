@@ -2,6 +2,13 @@
   <% @conversation.messages.each do |message| %>
     <% if message.body %>
       <div class="media">
+        <div class="media-left">
+          <% if message.user.avatar.attached? %>
+            <%= image_tag message.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle", alt: message.user.email.split("@")[0] %>
+          <% else %>
+            <%= image_tag 'icon.png' %>
+          <% end %>
+        </div>
         <div class="media-body">
           <h5 class="media-heading"><%= message.user.name %> <small class="text-muted"> <%= message.time %></small></h5>
           <p><%= message.body %></p>

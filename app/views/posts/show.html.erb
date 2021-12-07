@@ -1,21 +1,36 @@
 <div class="post-show row">
-  <div class="col-md-8">
     <% Post.all.each do |post| %>
       <%if @post.id == post.id%>
-        <%= image_tag post.image, class: "image" %>
+          <section class="post">
+                <div class="user">
+                    <div class="avatar">
+                    <% if post.user.avatar.attached? %>
+        <%= image_tag post.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle" %>
+      <% else %>
+        <%= image_tag 'icon.png' %>
+      <% end %>
+    </div>
+    <div class="username">
+        <%= link_to @post.user.name, user_path(@post.user), class: 'username' %>
+    </div>
+  </div>
+    <section class="post">
+
+  <% if post.image.attached? %>
+  <%= image_tag post.image,class: 'w-100' %>
+  <% end %>
+
+
+
       <% end %>
     <% end %>
   </div>
-  <div class="col-md-4">
-    <div class="user">
-      
-      <%= link_to @post.user.name, user_path(@post.user), class: 'username' %>
-    </div>
+  
+    
     <div class="caption">
-      <%= @post.caption %>
+      <%=@post.caption %>
     </div>
-  </div>
-</div>
+  
 
 
 <div class="delete">

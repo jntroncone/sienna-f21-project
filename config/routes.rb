@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'search/index'
   get 'conservations', to: 'conservation#index', as: 'conservations'
   post 'conservations', to: 'conservations#create'
   get 'conservations/new', to: 'conservations#new', as: 'new_conservation'
@@ -9,10 +8,10 @@ Rails.application.routes.draw do
   post 'conversations/:conversation_id/messages', to: 'messages#create'
   patch '/conversations/:conversation_id/messages/:id', to: 'messages#update'
   put '/conversations/:conversation_id/messages/:id', to: 'messages#update'
-  get 'users/:id', to: 'users#show', as: 'users'
   get 'search' => 'search#index'
   devise_for :users
   root to: 'pages#home'
+  get 'users/:id', to: 'users#show', as: 'userssearch'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :create]

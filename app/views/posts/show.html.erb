@@ -1,48 +1,5 @@
 
 <div class="post-show row">
-    <% Post.all.each do |post| %>
-      <%if @post.id == post.id%>
-          <section class="post w-100">
-                <div class="user">
-                    <div class="avatar">
-                    <% if post.user.avatar.attached? %>
-        <%= image_tag post.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle" %>
-      <% else %>
-        <%= image_tag 'icon.png' %>
-      <% end %>
-    </div>
-    <div class="username">
-        <%= link_to @post.user.name, user_path(@post.user), class: 'username' %>
-    </div>
-  </div>
-    <section class="post">
-
-  <% if post.image.attached? %>
-  <%= image_tag post.image,class: 'w-100' %>
-  <% end %>
-
-
-
-      <% end %>
-    <% end %>
-        <div class="ml-2 caption">
-      <%=@post.caption %>
-    </div>
-  
-
-
-<div class="delete">
-  <% if current_user.posts.exists?(@post.id) %>
-    <button type="button" class="btn btn-danger ml-2">
-    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none" %>
-    </button>
-  <% end %>
-</div>
-  </div>
-  
-    
-
-<div class="post-show row">
   <div class="col-md-8">
     <% Post.all.each do |post| %>
       <%if @post.id == post.id%>
@@ -52,18 +9,16 @@
   </div>
   <div class="col-md-4">
     <div class="user">
-      
+
       <%= link_to @post.user.name, user_path(@post.user), class: 'username' %>
     </div>
     <div class="caption">
       <%= @post.caption %>
      <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
 <% if pre_like %>
-
   <%= button_to 'Unlike', post_like_path(@post, pre_like), class:"like-button", method: :delete %>
 <% else %>
   <%= button_to 'Like', post_likes_path(@post), class:"like-button", method: :post %>
-
   <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
 <% else %>
   <%= button_to 'Like', post_likes_path(@post), method: :post %>
@@ -78,7 +33,9 @@
 
 <div class="delete">
   <% if current_user.posts.exists?(@post.id) %>
-    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <button type="button" class="btn btn-danger ml-2">
+    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none" %>
+    </button>
   <% end %>
 </div>
 
@@ -96,5 +53,3 @@
 
   </div>
 </div>
-
-

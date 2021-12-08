@@ -25,6 +25,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :sent_conversations, class_name: 'Conversation', foreign_key: 'sender_id'
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'receiver_id'
+  has_many :likes, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

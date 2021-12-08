@@ -19,9 +19,6 @@
   <%= button_to 'Unlike', post_like_path(@post, pre_like), class:"like-button", method: :delete %>
 <% else %>
   <%= button_to 'Like', post_likes_path(@post), class:"like-button", method: :post %>
-  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-<% else %>
-  <%= button_to 'Like', post_likes_path(@post), method: :post %>
 <% end %>
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
     </div>

@@ -13,13 +13,35 @@
     </div>
     <div class="caption">
       <%= @post.caption %>
+     <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(@post), method: :post %>
+<% end %>
+<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
     </div>
   </div>
 </div>
-
-
 <div class="delete">
   <% if current_user.posts.exists?(@post.id) %>
     <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 </div>
+
+<div class="card my-1"> 
+  <div class="card-body">
+    <p class="font-weight-bold">Comments</p>
+    <%= form_with(model: [@post, @post.comments.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body, class: 'form-control bg-dark', required: true   %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+    <%= render @post.comments %>
+
+  </div>
+</div>
+
+

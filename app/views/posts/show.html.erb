@@ -9,8 +9,13 @@
   </div>
   <div class="col-md-4">
     <div class="user">
+    <% if @post.user.avatar.attached? %>
+        <%= image_tag @post.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle" %>
+      <% else %>
+        <%= image_tag 'icon.png' %>
+      <% end %>
 
-      <%= link_to @post.user.name, user_path(@post.user), class: 'username' %>
+      <%= link_to @post.user.name, user_path(@post.user), class: 'username pl-2' %>
     </div>
     <div class="caption">
       <%= @post.caption %>

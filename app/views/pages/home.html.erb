@@ -11,7 +11,8 @@
       <% end %>
     </div>
     <div class="username">
-      <%= post.user.name %>
+       <%= link_to post.user.name, user_path(post.user), class: 'username' %>
+
     </div>
   </div>
       <section class="post">
@@ -21,13 +22,15 @@
   <% end %>
 <div class="description">
     <%= post.caption %>
-      <%= button_to 'Like', post_likes_path(post), class:"like-button" %>
+        <%= button_to 'Like', post_likes_path(post), class:"like-button" %>
 
 
 
   </div>
+
     
 </section>
+
     </section>
   <% end %>
 </div>

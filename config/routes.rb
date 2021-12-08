@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post 'conversations/:conversation_id/messages', to: 'messages#create'
   patch '/conversations/:conversation_id/messages/:id', to: 'messages#update'
   put '/conversations/:conversation_id/messages/:id', to: 'messages#update'
+
+  get 'pages/gallery', to: 'pages#gallery', as:'gallery'
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

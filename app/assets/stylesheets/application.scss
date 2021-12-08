@@ -27,3 +27,19 @@ body{background-color:#121212; height: 100%;}
 html{height: 100%;}
 .login{margin: 0 auto; border: 0px;}
 .card{background-color: #121212;}
+.like-button{
+  text-decoration: none;
+  border-radius: 10px;
+  display: inline-flex;
+  background-color: #6610f2;
+  border: 2px solid;
+  color: white;
+  transition: all 0.2s linear 0s;
+  margin-top: 3px;
+  margin-left: -1px;
+}
+.like-button:hover {
+  background-color: #2b0568 !important;
+  color: white;
+  
+}

@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :bigint           not null, primary key
+#  body       :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  parent_id  :integer
+#  post_id    :integer
+#
+
+one:
+  body: MyText
+  post_id: 1
+  parent_id: 1
+
+two:
+  body: MyText
+  post_id: 1
+  parent_id: 1

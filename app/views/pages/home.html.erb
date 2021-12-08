@@ -21,7 +21,12 @@
   <% end %>
 <div class="description">
     <%= post.caption %>
+      <%= button_to 'Like', post_likes_path(post), class:"like-button" %>
+
+
+
   </div>
+    
 </section>
     </section>
   <% end %>

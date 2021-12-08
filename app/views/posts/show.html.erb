@@ -1,3 +1,4 @@
+
 <div class="post-show row">
     <% Post.all.each do |post| %>
       <%if @post.id == post.id%>
@@ -40,3 +41,60 @@
   </div>
   
     
+
+<div class="post-show row">
+  <div class="col-md-8">
+    <% Post.all.each do |post| %>
+      <%if @post.id == post.id%>
+        <%= image_tag post.image, class: "image" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <div class="user">
+      
+      <%= link_to @post.user.name, user_path(@post.user), class: 'username' %>
+    </div>
+    <div class="caption">
+      <%= @post.caption %>
+     <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+
+  <%= button_to 'Unlike', post_like_path(@post, pre_like), class:"like-button", method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(@post), class:"like-button", method: :post %>
+
+  <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(@post), method: :post %>
+<% end %>
+<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="delete">
+  <% if current_user.posts.exists?(@post.id) %>
+    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div>
+
+<div class="card my-1"> 
+  <div class="card-body">
+    <p class="font-weight-bold">Comments</p>
+    <%= form_with(model: [@post, @post.comments.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body, class: 'form-control bg-dark', required: true   %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+    <%= render @post.comments %>
+
+  </div>
+</div>
+
+

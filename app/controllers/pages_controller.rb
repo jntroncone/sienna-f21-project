@@ -7,6 +7,8 @@ class PagesController < ApplicationController
     def home
         @user = User.all
         @posts = Post.all.order(created_at: :desc)
+
+
         render :home
     end
 

@@ -1,35 +1,91 @@
-<h1>Home</h1>
-<div class="posts">
-  <% @posts.each do |post| %>
-    <section class="post">
-      <div class="user">
-    <div class="avatar">
-      <% if post.user.avatar.attached? %>
-        <%= image_tag post.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle" %>
-      <% else %>
-        <%= image_tag 'icon.png' %>
+<body class="<%= cookies[:theme] %>">
+
+  <% if cookies[:theme] == "light" %>
+    <%= link_to "Toggle Dark Theme", root_path(theme: "dark"), class:'like-button text-decoration-none p-2' %>
+  <% else %>
+    <%= link_to "Toggle Light Theme", root_path(theme: "light"), class:'like-button text-decoration-none p-2' %>
+  <% end %>
+
+  
+  <%= yield %>
+
+  <% if cookies[:theme] == "light" %>
+  
+    <style>
+    *{color: black!important;}
+    </style>
+
+
+    <body style="background-color:#B0C19D;">    
+    <h1>Home</h1>
+    <div class="posts">
+      <% @posts.each do |post| %>
+        <section class="post">
+          <div class="user">
+        <div class="avatar">
+          <% if post.user.avatar.attached? %>
+            <%= image_tag post.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle" %>
+          <% else %>
+            <%= image_tag 'icon.png' %>
+          <% end %>
+        </div>
+        <div class="username">
+          <%= link_to post.user.name, user_path(post.user), class: 'username' %>
+
+        </div>
+      </div>
+          <section class="post">
+
+      <% if post.image.attached? %>
+      <%= image_tag post.image,class: 'w-100' %>
+      <% end %>
+    <div class="description">
+        <%= post.caption %>
+            <%= button_to 'Like + Comments', post_likes_path(post), class:"like-button" %>
+      </div> 
+    </section>
+        </section>
       <% end %>
     </div>
-    <div class="username">
-       <%= link_to post.user.name, user_path(post.user), class: 'username' %>
 
-    </div>
-  </div>
-      <section class="post">
+  <%else%>
 
-  <% if post.image.attached? %>
-  <%= image_tag post.image,class: 'w-100' %>
-  <% end %>
-<div class="description">
-    <%= post.caption %>
-        <%= button_to 'Like + Comments', post_likes_path(post), class:"like-button" %>
+  <style>
+  *{color: white!important;}
+  </style>
 
+    <body style="background-color:#121212;">  
+      
+    <h1>Home</h1>
+    <div class="posts">
+      <% @posts.each do |post| %>
+        <section class="post">
+          <div class="user">
+        <div class="avatar">
+          <% if post.user.avatar.attached? %>
+            <%= image_tag post.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle" %>
+          <% else %>
+            <%= image_tag 'icon.png' %>
+          <% end %>
+        </div>
+        <div class="username">
+          <%= link_to post.user.name, user_path(post.user), class: 'username' %>
 
-  </div>
+        </div>
+      </div>
+          <section class="post">
 
-    
-</section>
-
+      <% if post.image.attached? %>
+      <%= image_tag post.image,class: 'w-100' %>
+      <% end %>
+    <div class="description">
+        <%= post.caption %>
+            <%= button_to 'Like + Comments', post_likes_path(post), class:"like-button" %>
+      </div> 
     </section>
-  <% end %>
-</div>
+        </section>
+      <% end %>
+    </div>
+    
+  <%end%>
+</body>

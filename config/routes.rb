@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   patch '/conversations/:conversation_id/messages/:id', to: 'messages#update'
   put '/conversations/:conversation_id/messages/:id', to: 'messages#update'
   get 'search' => 'search#index'
+
   devise_for :users
   root to: 'pages#home'
   get 'users/:id', to: 'users#show', as: 'userssearch'

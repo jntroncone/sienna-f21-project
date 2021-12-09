@@ -1,9 +1,12 @@
-<% if cookies[:theme] == "dark" %>
+<% if cookies[:theme] == "dark" %> 
+  <style>
+  *{color: white!important;}
+  </style>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <%= link_to image_tag("icon.png"), root_path, class: "d-inline-block align-text-top" %>
-        Instacat!
+        <p class =  "text-white"> Instacat!</p>
       </a>
 
       <% if user_signed_in? %>
@@ -14,7 +17,9 @@
         <ul class="navbar-nav ml-md-auto">
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0 ml-md-auto">
-            <input class="form-control mr-sm-2 text-center bg-dark" type="search" placeholder="Search" aria-label="Search">
+            
+            <input class="form-control mr-sm-2 text-center bg-dark text-white" type="search" placeholder="Search" aria-label="Search" >
+          
             </form>
           </li>
           <li class="nav-item">
@@ -35,7 +40,11 @@
       </div>
     </div>
   </nav>
+  
 <%else%>
+  <style>
+    *{color: black!important;}
+    </style>
   <nav class="navbar navbar-expand-lg navbar-dark"style="background-color:#c7b7c6;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">

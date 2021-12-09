@@ -9,6 +9,9 @@
   <%= yield %>
 
   <% if cookies[:theme] == "light" %>
+  <style>
+    *{color: black!important;}
+    </style>
     <body style="background-color:#B0C19D;">    
       <%= bootstrap_form_for Post.new do |f| %>
         <div class="form-group">
@@ -28,7 +31,9 @@
     </body>
 
   <%else%>
-
+  <style>
+    *{color: white!important;}
+    </style>
   <body style="background-color:#121212;">    
       <%= bootstrap_form_for Post.new do |f| %>
         <div class="form-group">

@@ -9,6 +9,11 @@
   <%= yield %>
 
   <% if cookies[:theme] == "light" %>
+  
+    <style>
+    *{color: black!important;}
+    </style>
+
     <body style="background-color:#B0C19D;">    
     <h1>Home</h1>
     <div class="posts">
@@ -42,7 +47,13 @@
     </div>
 
   <%else%>
-      <body style="background-color:#121212;">    
+
+  <style>
+  *{color: white!important;}
+  </style>
+
+    <body style="background-color:#121212;">  
+      
     <h1>Home</h1>
     <div class="posts">
       <% @posts.each do |post| %>

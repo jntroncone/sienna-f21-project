@@ -9,6 +9,9 @@
   <%= yield %>
 
   <% if cookies[:theme] == "light" %>
+    <style>
+    *{color: black!important;}
+    </style>
     <body style="background-color:#B0C19D;">
     <div class="row justify-content-md-center profile-wrapper">
     <div class="col-md-4 text-center">
@@ -82,6 +85,9 @@
 
   </div>
 <%else%>
+    <style>
+    *{color: white!important;}
+    </style>
   <body style="background-color:#121212;">
     <div class="row justify-content-md-center profile-wrapper">
     <div class="col-md-4 text-center">

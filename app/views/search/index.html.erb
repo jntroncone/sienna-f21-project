@@ -1,3 +1,21 @@
+<body class="<%= cookies[:theme] %>">
+<% if cookies[:theme] == "light" %>
+    <%= link_to "Toggle Dark Theme", root_path(theme: "dark"), class:'like-button text-decoration-none p-2' %>
+  <% else %>
+    <%= link_to "Toggle Light Theme", root_path(theme: "light"), class:'like-button text-decoration-none p-2' %>
+  <% end %>
+  <%= yield %>
+<br>
+  <% if cookies[:theme] == "light" %>
+  
+    <style>
+    *{color: black!important;}
+    .card{
+      background-color:#B0C19D;
+    }
+    </style>
+        <body style="background-color:#B0C19D;">  
+
 <% @users.each do |u|%>
 <div class = "border border-secondary mt-2  d-flex justify-content-center d-inline-flex p-2" >
     <div class="avatar">
@@ -11,3 +29,28 @@
     <%=link_to u.email.split("@")[0], userssearch_path(u), class: "pl-2", style: "padding-top: 25%"%>
 </div>
 <% end %>
+<%else%>
+  
+    <style>
+    *{color: white!important;}
+    .card{
+      background-color:#121212;
+    }
+    </style>
+  <body style="background-color:#121212;">  
+  <% @users.each do |u|%>
+<div class = "border border-secondary mt-2  d-flex justify-content-center d-inline-flex p-2" >
+    <div class="avatar">
+      <% if u.avatar.attached? %>
+        <%= image_tag u.avatar, height: 100, width: 100, class: "avatar-index rounded-circle" %>
+      <% else %>
+        <%= image_tag 'icon.png', height: 100, width: 100 %>
+      <% end %>
+    </div>
+
+    <%=link_to u.email.split("@")[0], userssearch_path(u), class: "pl-2", style: "padding-top: 25%"%>
+</div>
+<% end %>
+<% end %>
+
+</body>

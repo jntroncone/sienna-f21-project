@@ -1,4 +1,86 @@
+<body class="<%= cookies[:theme] %>">
+<% if cookies[:theme] == "light" %>
+    <%= link_to "Toggle Dark Theme", root_path(theme: "dark"), class:'like-button text-decoration-none p-2' %>
+  <% else %>
+    <%= link_to "Toggle Light Theme", root_path(theme: "light"), class:'like-button text-decoration-none p-2' %>
+  <% end %>
+  <%= yield %>
 
+  <% if cookies[:theme] == "light" %>
+  
+    <style>
+    *{color: black!important;}
+    .card{
+      background-color:#B0C19D;
+    }
+    </style>
+        <body style="background-color:#B0C19D;">  
+
+<div class="post-show row">
+  <div class="col-md-8">
+    <% Post.all.each do |post| %>
+      <%if @post.id == post.id%>
+        <%= image_tag post.image, class: "image" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-4">
+    <div class="user">
+    <% if @post.user.avatar.attached? %>
+        <%= image_tag @post.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle" %>
+      <% else %>
+        <%= image_tag 'icon.png' %>
+      <% end %>
+
+      <%= link_to @post.user.name, user_path(@post.user), class: 'username pl-2' %>
+    </div>
+    <div class="caption">
+      <%= @post.caption %>
+     <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+<% if pre_like %>
+  <%= button_to 'Unlike', post_like_path(@post, pre_like), class:"like-button", method: :delete %>
+<% else %>
+  <%= button_to 'Like', post_likes_path(@post), class:"like-button", method: :post %>
+<% end %>
+<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="delete">
+  <% if current_user.posts.exists?(@post.id) %>
+    <button type="button" class="btn btn-danger ml-2">
+    <%= link_to 'Remove', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none" %>
+    </button>
+  <% end %>
+</div>
+
+<div class="card my-1 " style="background-color:#B0C19D"> 
+  <div class="card-body" style="background-color:#B0C19D;">
+    <p class="font-weight-bold">Comments</p>
+    <%= form_with(model: [@post, @post.comments.build]) do |f| %>
+      <div class="form-group">
+        <%= f.label 'New comment' %>
+        <%= f.text_area :body, class: 'form-control bg-white', required: true %>
+      </div>
+      <%= f.submit 'Submit', class: 'btn btn-primary' %>
+    <% end %>
+    <%= render @post.comments %>
+
+  </div>
+</div>
+  <%else%>
+  
+    <style>
+    *{color: white!important;}
+    .card{
+      background-color:#121212;
+    }
+    </style>
+  <body style="background-color:#121212;">  
 <div class="post-show row">
   <div class="col-md-8">
     <% Post.all.each do |post| %>
@@ -51,7 +133,10 @@
       </div>
       <%= f.submit 'Submit', class: 'btn btn-primary' %>
     <% end %>
-    <%= render @post.comments %>
+    
+    <%= render @post.comments, class: "uh" %>
 
   </div>
 </div>
+      <% end %>
+</body>

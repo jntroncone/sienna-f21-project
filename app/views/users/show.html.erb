@@ -38,16 +38,16 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div style="background-color: #121212" class="modal-header">
+              <div style="background-color: #EDEDED" class="modal-header">
                 <h1 class="modal-title" id="exampleModalLabel" style="font-size: 1.2em">Settings</h1>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div  class="list-group text-center">
-                <a href="<%= edit_user_path(current_user) %>" class="list-group-item list-group-item-action">Edit Profile</a>
-                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action" %>
-                <a href="#" class="list-group-item list-group-item-action" data-dismiss="modal">Cancel</a>
+                <a href="<%= edit_user_path(current_user) %>" class="list-group-item list-group-item-action" style="background-color: #E8EBE0">Edit Profile</a>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "list-group-item list-group-item-action",style: "background-color: #E8EBE0" %>
+                <a href="#" style="background-color: #E8EBE0" class="list-group-item list-group-item-action" data-dismiss="modal">Cancel</a>
               </div>
             </div>
           </div>

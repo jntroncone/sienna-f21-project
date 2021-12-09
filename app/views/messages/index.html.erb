@@ -1,4 +1,59 @@
+<body class="<%= cookies[:theme] %>">
+<% if cookies[:theme] == "light" %>
+    <%= link_to "Toggle Dark Theme", root_path(theme: "dark"), class:'like-button text-decoration-none p-2' %>
+  <% else %>
+    <%= link_to "Toggle Light Theme", root_path(theme: "light"), class:'like-button text-decoration-none p-2' %>
+  <% end %>
+  <%= yield %>
+<br>
+  <% if cookies[:theme] == "light" %>
+  
+    <style>
+    *{color: black!important;}
+    .card{
+      background-color:#B0C19D;
+    }
+    </style>
+        <body style="background-color:#B0C19D;">  
 <div id="messages">
+  <% @conversation.messages.each do |message| %>
+    <% if message.body %>
+      <div class="media">
+        <div class="media-left">
+          <% if message.user.avatar.attached? %>
+            <%= image_tag message.user.avatar, height: 50, width: 50, class: "avatar-index rounded-circle", alt: message.user.email.split("@")[0] %>
+          <% else %>
+            <%= image_tag 'icon.png' %>
+          <% end %>
+        </div>
+        <div class="media-body">
+          <h5 class="media-heading"><%= message.user.name %> <small class="text-black"> <%= message.time %></small></h5>
+          <p><%= message.body %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_for [@conversation, @message] do |f| %>
+  <div class="form-group">
+    <%= f.text_area :body, autofocus: true, placeholder: "Start typing...", class: "form-control bg-white", rows: 2 %>
+  </div>
+
+  
+  <%= link_to 'Back to Inbox', conversations_path, class: "btn btn-primary pull-right"%>
+  <%= f.submit "Send", class: "btn btn-primary pull-right" %>
+<% end %>
+<%else%>
+  
+    <style>
+    *{color: white!important;}
+    .card{
+      background-color:#121212;
+    }
+    </style>
+  <body style="background-color:#121212;">  
+  <div id="messages">
   <% @conversation.messages.each do |message| %>
     <% if message.body %>
       <div class="media">
@@ -27,3 +82,5 @@
   <%= link_to 'Back to Inbox', conversations_path, class: "btn btn-primary pull-right"%>
   <%= f.submit "Send", class: "btn btn-primary pull-right" %>
 <% end %>
+<% end %>
+</body>

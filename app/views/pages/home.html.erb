@@ -5,6 +5,7 @@
   <% else %>
     <%= link_to "Toggle Light Theme", root_path(theme: "light"), class:'like-button text-decoration-none p-2' %>
   <% end %>
+
   
   <%= yield %>
 
@@ -13,6 +14,7 @@
     <style>
     *{color: black!important;}
     </style>
+
 
     <body style="background-color:#B0C19D;">    
     <h1>Home</h1>
@@ -39,7 +41,7 @@
       <% end %>
     <div class="description">
         <%= post.caption %>
-            <%= button_to 'Like', post_likes_path(post), class:"like-button" %>
+            <%= button_to 'Like + Comments', post_likes_path(post), class:"like-button" %>
       </div> 
     </section>
         </section>
@@ -78,7 +80,7 @@
       <% end %>
     <div class="description">
         <%= post.caption %>
-            <%= button_to 'Like', post_likes_path(post), class:"like-button" %>
+            <%= button_to 'Like + Comments', post_likes_path(post), class:"like-button" %>
       </div> 
     </section>
         </section>

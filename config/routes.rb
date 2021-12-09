@@ -27,5 +27,5 @@ Rails.application.routes.draw do
 
   end
   
-
+  # https://github.com/mickyginger/rails-conversations for implementing dm example/tutorial
 end

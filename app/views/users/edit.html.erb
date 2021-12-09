@@ -1,9 +1,9 @@
 <body class="<%= cookies[:theme] %>">
 
   <% if cookies[:theme] == "light" %>
-    <%= link_to "Toggle Dark Theme", root_path(theme: "dark") %>
+    <%= link_to "Toggle Dark Theme", root_path(theme: "dark"), class:'like-button text-decoration-none p-2' %>
   <% else %>
-    <%= link_to "Toggle Light Theme", root_path(theme: "light") %>
+    <%= link_to "Toggle Light Theme", root_path(theme: "light"), class:'like-button text-decoration-none p-2' %>
   <% end %>
   
   <%= yield %>

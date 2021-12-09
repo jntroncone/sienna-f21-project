@@ -19,6 +19,12 @@ class CommentsController < ApplicationController
   def edit
   end
 
+  def _comment
+    @comments = Comment.all
+
+  end
+
+
   # POST /comments or /comments.json
   def create
     @post = Post.find(params[:post_id])
@@ -58,8 +64,12 @@ class CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+end
+
 
   private
+
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
@@ -69,4 +79,4 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:body, :post_id, :parent_id)
     end
-end
+

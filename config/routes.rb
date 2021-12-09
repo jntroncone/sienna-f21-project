@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'users/:id', to: 'users#show', as: 'userssearch'
+  get 'users/:user_id/posts/:id', to: 'post#show', as: 'postcomment'
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :conversations, only: [:index, :create] do
     resources :messages, only: [:index, :create]
